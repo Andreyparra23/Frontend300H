@@ -1,0 +1,105 @@
+
+h1 {
+    margin-top: 60px;
+    text-align:  center;
+    font-size: 45px;
+    margin-bottom: 40 px
+;
+}
+
+/* Estilos generales para el contenedor principal */
+.admin-container {
+    background-color: #c38e5dbb;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2, h3 {
+    color: #000000;
+}
+
+/* Estilo para las pestañas de navegación */
+.nav-tabs {
+    border-bottom: 2px solid #d4b098;
+}
+.nav-tabs .nav-link {
+    color: #5a3e2b;
+    border: 1px solid #000000;
+    background-color: #f9f3e8;
+    border-radius: 4px 4px 0 0;
+}
+.nav-tabs .nav-link.active {
+    background-color: #d4b098;
+    color: white;
+    border-color: #000000 ;
+}
+
+/* Tablas */
+.table {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+.table th {
+    background-color: #c5a68d;
+    color: white;
+    text-align: center;
+}
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    color: #5a3e2b;
+}
+
+/* Botones de acción en las tablas */
+.btn {
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-warning {
+    background-color: #e2b580;
+    border-color: #e2b580;
+    color: #5a3e2b;
+}
+.btn-warning:hover {
+    background-color: #c29b6d;
+}
+
+.btn-danger {
+    background-color: #b35e5e;
+    border-color: #b35e5e;
+    color: #ffffff;
+}
+.btn-danger:hover {
+    background-color: #993f3f;
+}
+
+.btn-primary {
+    background-color: #8c6f57;
+    border-color: #8c6f57;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #735a46;
+}
+
+/* Estilos para hover y tabla alterna */
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f3e8;
+}
+.table tbody tr:hover {
+    background-color: #e9dac4;
+}
+
+/* Estilo para la tabla de usuarios */
+.table-dark {
+    background-color: #d5a96d;
+    color: white;
+}
+
+/* Ajustes adicionales */
+p {
+    color: #5a3e2b;
+}

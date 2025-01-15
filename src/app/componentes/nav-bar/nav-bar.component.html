@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container-fluid justify-content-between">
+    <a routerLink="/" class="navbar-brand">
+      <img  id="logo" src="assets/logo licores la colmena.png" alt="logo licores" class="me-3">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100 justify-content-evenly">
+        <a class="nav-link" routerLink="/">INICIO</a>
+        <a class="nav-link" routerLink="/login">INGRESAR</a>
+        <a class="nav-link" routerLink="/registro">REGISTRARSE</a>
+        <a class="nav-link" routerLink="/productos">PRODUCTOS</a>
+
+   <!--      <a class="nav-link" routerLink="productos">PRODUCTOS</a>  hacer boton de cierre de sesion,  -->
+
+<button *ngIf="islogged" class="btn btn-info" (click)="handleLogout()">Cerrar sesión</button>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+

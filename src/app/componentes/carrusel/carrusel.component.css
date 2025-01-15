@@ -1,0 +1,5 @@
+.carousel-image {
+  height: 50vh; /* Limita la altura a la mitad del tamaño visible del viewport */
+  object-fit: cover; /* Mantiene las proporciones de la imagen */
+}
+ 

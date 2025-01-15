@@ -1,0 +1,50 @@
+
+.d-flex {
+    width: 95%; /* Ocupa el 95% del ancho de la pantalla */
+    margin: 0 auto; /* Centra las tarjetas en la pantalla */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+ 
+  .card {
+    width: 18rem; 
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+  }
+  
+  /* Imagen de la tarjeta */
+  .card img {
+    object-fit: cover; 
+    height: 200px; 
+  }
+  
+  /* Alineación del texto al fondo de la tarjeta */
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding: 1rem;
+  }
+  
+  /* Estilo de los botones */
+  .card-body .btn {
+    margin-top: 10px; 
+  
+  }
+
+  /* Cambiar color de fondo y borde de los botones dentro de las tarjetas */
+.card .btn {
+  background-color: #d5a96d; /* Color café clarito */
+  border-color: #d5a96d; /* Color de borde café clarito */
+}
+
+.card .btn:hover {
+  background-color: #c38e5d; /* Color café más oscuro al pasar el ratón */
+  border-color: #c38e5d; /* Borde más oscuro */
+}
+
+  

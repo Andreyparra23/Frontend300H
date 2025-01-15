@@ -1,0 +1,37 @@
+main.container {
+    background-color: #d2b48c !important; /* Fondo café claro */
+    border-radius: 15px !important; /* Borde redondeado */
+    width: 90% !important; /* Ajusta el ancho */
+    margin-left: 30px !important; /* Alineado a la izquierda */
+    margin-right: auto !important; /* Evita que se centre */
+    padding: 20px !important; /* Espaciado interno */
+}
+
+main.container h2 {
+    color: #333 !important; /* Color del título */
+}
+
+main.container form {
+    text-align: left !important; /* Alineación del texto en el formulario */
+}
+
+main.container .form-label {
+    color: #333 !important; /* Color de las etiquetas del formulario */
+}
+
+main.container input {
+    border-radius: 10px !important; /* Redondez en los inputs */
+    padding: 10px !important;
+}
+
+main.container button {
+    border-radius: 10px !important; /* Botón con bordes redondeados */
+    padding: 10px 20px !important;
+    display: inline-block !important; /* Mantiene el tamaño del botón */
+    margin-top: 20px !important; /* Añade espacio superior */
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center; /* Centra el contenido */
+}

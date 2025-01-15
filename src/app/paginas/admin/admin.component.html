@@ -1,0 +1,77 @@
+<h1>PANEL DE ADMINISTRACIÓN LICORES LA COLMENA</h1>
+
+<main class="admin-container p-5">
+    <h2 class="text-center mb-4">Panel de Administración gestión de usuarios e inventario</h2>
+
+    <!-- Navegación para cambiar entre inventario y usuarios -->
+    <nav class="mb-5">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" id="inventory-tab" data-bs-toggle="tab" href="#inventory">Inventario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="users-tab" data-bs-toggle="tab" href="#users">Usuarios</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Secciones de inventario y usuarios -->
+    <div class="tab-content">
+      <!-- Inventario -->
+      <div class="tab-pane fade show active" id="inventory">
+        <h3 class="text-start">Inventario</h3>
+
+        <!-- Tabla del inventario -->
+        <table class="table table-bordered mt-3">
+          <thead class="table-dark">
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{ producto.name }}</td>
+              <td>{{ producto.category }}</td>
+              <td>{{ producto.price }}</td>
+              <td>
+                <button class="btn btn-warning btn-sm" >Editar</button>
+                <button class="btn btn-danger btn-sm" >Eliminar</button>
+                <button class="btn btn-success btn-sm" >Agregar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Usuarios -->
+      <div class="tab-pane fade" id="users">
+        <h3 class="text-start">Usuarios</h3>
+
+        <!-- Tabla de usuarios -->
+        <table class="table table-bordered mt-3">
+          <thead class="table-dark">
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td>{{ usuario.fullname }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.role }}</td>
+              <td>
+                <button class="btn btn-warning btn-sm" >Editar</button>
+                <button class="btn btn-danger btn-sm" >Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</main>

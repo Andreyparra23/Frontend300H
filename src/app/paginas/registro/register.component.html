@@ -1,0 +1,81 @@
+<app-nav-bar> </app-nav-bar>
+
+
+<section>
+
+  <main class="container mt-5 ms-auto text-center bg-secondary p-5 rounded">
+    <h2>FORMULARIO DE REGISTRO</h2>
+  
+    <form [formGroup]="formularioRegister" (ngSubmit)="handdleSubmit()">
+        <!-- Nombre completo -->
+        <div class="mb-3 text-start">
+            <label for="nombreCompleto" class="form-label">Nombre completo</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nombreCompleto" 
+              name="nombreCompleto"
+              formControlName="nombreCompleto"
+              >
+        </div>
+  
+        <!-- Correo -->
+        <div class="mb-3 text-start">
+            <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="exampleInputEmail1" 
+              aria-describedby="emailHelp"
+              name="email"
+              formControlName="email"
+              >
+            <div id="emailHelp" class="form-text">Nunca compartiremos tu correo con nadie más.</div>
+        </div>
+  
+        <!-- Password -->
+        <div class="mb-3 text-start">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input 
+              type="password" 
+              class="form-control" 
+              id="exampleInputPassword1" 
+              name="password"
+              formControlName="password"
+              >
+        </div>
+  
+        <!-- Tipo de documento -->
+        <div class="mb-3 text-start">
+            <label for="tipoDocumento" class="form-label">Tipo de documento</label>
+            <select class="form-select" id="tipoDocumento" name="tipoDocumento" formControlName="tipoDocumento">
+                <option selected disabled>Selecciona tu tipo de documento</option>
+                <option value="CC">Cédula de ciudadanía</option>
+                <option value="CE">Cédula de extranjería</option>
+            </select>
+        </div>
+  
+        <!-- Número de documento -->
+        <div class="mb-3 text-start">
+            <label for="numeroDocumento" class="form-label">Número de documento</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="numeroDocumento" 
+              name="numeroDocumento"
+              formControlName="numeroDocumento"
+              >
+        </div>
+  
+        <!-- Botón de enviar (centrado) -->
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-dark">Registrarse</button>
+        </div>
+    </form>
+  </main>
+  
+
+
+</section>
+
+<router-outlet> </router-outlet>
