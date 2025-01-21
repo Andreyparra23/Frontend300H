@@ -46,7 +46,7 @@ _productsService = inject(ProductsService)
   // Obtener lista de usuarios
   obtenerUsuarios(): void {
     this._userService.getUsuarios().subscribe(
-      {
+      { 
         
           next: (res: any) => {
             console.log('res', res);
