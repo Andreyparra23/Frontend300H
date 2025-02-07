@@ -5,73 +5,183 @@
 
     <!-- Navegación para cambiar entre inventario y usuarios -->
     <nav class="mb-5">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="inventory-tab" data-bs-toggle="tab" href="#inventory">Inventario</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="users-tab" data-bs-toggle="tab" href="#users">Usuarios</a>
-        </li>
-      </ul>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="inventory-tab" data-bs-toggle="tab" href="#inventory">Inventario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="users-tab" data-bs-toggle="tab" href="#users">Usuarios</a>
+            </li>
+        </ul>
     </nav>
 
     <!-- Secciones de inventario y usuarios -->
     <div class="tab-content">
-      <!-- Inventario -->
-      <div class="tab-pane fade show active" id="inventory">
-        <h3 class="text-start">Inventario</h3>
+        <!-- Inventario -->
+        <div class="tab-pane fade show active" id="inventory">
+            <h3 class="text-start">Inventario</h3>
 
-        <!-- Tabla del inventario -->
-        <table class="table table-bordered mt-3">
-          <thead class="table-dark">
-            <tr>
-              <th>Producto</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let producto of productos">
-              <td>{{ producto.name }}</td>
-              <td>{{ producto.category }}</td>
-              <td>{{ producto.price }}</td>
-              <td>
-                <button class="btn btn-warning btn-sm" >Editar</button>
-                <button class="btn btn-danger btn-sm" >Eliminar</button>
-                <button class="btn btn-success btn-sm" >Agregar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <!-- Botón para abrir el modal de agregar producto -->
+<!--             <button class="btn btn-success mb-3" (click)="abrirModalAgregarProducto(modalAgregarProducto)">Agregar Producto</button>
+ -->            <button (click)='agregarProducto()' class="btn btn-success mb-3" >Agregar Producto</button>
 
-      <!-- Usuarios -->
-      <div class="tab-pane fade" id="users">
-        <h3 class="text-start">Usuarios</h3>
 
-        <!-- Tabla de usuarios -->
-        <table class="table table-bordered mt-3">
-          <thead class="table-dark">
-            <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Rol</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let usuario of usuarios">
-              <td>{{ usuario.fullname }}</td>
-              <td>{{ usuario.email }}</td>
-              <td>{{ usuario.role }}</td>
-              <td>
-                <button class="btn btn-warning btn-sm" >Editar</button>
-                <button class="btn btn-danger btn-sm" >Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <!-- Tabla del inventario -->
+            <table class="table table-bordered mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos">
+                        <td>{{ producto.name }}</td>
+                        <td>{{ producto.category }}</td>
+                        <td>{{ producto.price }}</td>
+                        <td>
+   <button (click)="mostrarModalEditar(producto)" class="btn btn-warning btn-sm" >Editar</button>
+<button type="button" class="btn btn-danger" (click)="producto._id ? eliminarProducto(producto._id) : null">Eliminar</button>
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Usuarios -->
+        <div class="tab-pane fade" id="users">
+            <h3 class="text-start">Usuarios</h3>
+
+            <!-- Tabla de usuarios -->
+            <table class="table table-bordered mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{ usuario.fullname }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.role }}</td>
+                        <td>
+                           <button (click)="mostrarModalEditarUsuario(usuario)" class="btn btn-warning btn-sm" >Editar</button>
+                        <button class="btn btn-danger btn-sm">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </main>
+
+
+
+
+<!-- Modal Agregar Producto -->
+
+<div *ngIf="isVisible" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h5>Agregar Producto</h5>
+            <button type="button" class="btn-close" (click)="agregarProducto()">×</button>
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="productoNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="productoNombre" name="name" [(ngModel)]="nuevoProducto.name">
+            </div>
+            <div class="mb-3">
+                <label for="productoCategoria" class="form-label">Categoría</label>
+                <input type="text" class="form-control" id="productoCategoria" name="category" [(ngModel)]="nuevoProducto.category">
+            </div>
+            <div class="mb-3">
+                <label for="productoPrecio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="productoPrecio" name="price" [(ngModel)]="nuevoProducto.price">
+            </div>
+            <div class="mb-3">
+                <label for="productoDescripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="productoDescripcion" name="description"  [(ngModel)]="nuevoProducto.description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="productoImagen" class="form-label">Imagen (URL)</label>
+                <input type="text" class="form-control" id="productoImagen" name="image" [(ngModel)]="nuevoProducto.Image">
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="agregarProducto()">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="guardarNuevoProducto()">Guardar</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Actualizar Producto -->
+<div *ngIf="isEditVisible" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h5>Actualizar Producto</h5>
+            <button type="button" class="btn-close" (click)="cerrarModalEditar()">×</button>
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="productoNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="productoNombre" name="name" [(ngModel)]="productoSeleccionado.name">
+            </div>
+            <div class="mb-3">
+                <label for="productoCategoria" class="form-label">Categoría</label>
+                <input type="text" class="form-control" id="productoCategoria" name="category" [(ngModel)]="productoSeleccionado.category">
+            </div>
+            <div class="mb-3">
+                <label for="productoPrecio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="productoPrecio" name="price" [(ngModel)]="productoSeleccionado.price">
+            </div>
+            <div class="mb-3">
+                <label for="productoDescripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="productoDescripcion" name="description" [(ngModel)]="productoSeleccionado.description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="productoImagen" class="form-label">Imagen (URL)</label>
+                <input type="text" class="form-control" id="productoImagen" name="image" [(ngModel)]="productoSeleccionado.Image">
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="cerrarModalEditar()">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="actualizarProducto()">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Usuario -->
+<div *ngIf="isEditUserVisible" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h5>Editar Usuario</h5>
+            <button type="button" class="btn-close" (click)="cerrarModalEditarUsuario()">×</button>
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="usuarioNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="usuarioNombre" name="nombre" [(ngModel)]="usuarioSeleccionado.fullname">
+            </div>
+            <div class="mb-3">
+                <label for="usuarioEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="usuarioEmail" name="email" [(ngModel)]="usuarioSeleccionado.email">
+            </div>
+
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="cerrarModalEditarUsuario()">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="actualizarUsuario()">Guardar</button>
+        </div>
+    </div>
+</div>
+

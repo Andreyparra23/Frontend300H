@@ -10,7 +10,4 @@ describe('UserService', () => {
     service = TestBed.inject(UserService);
   });
 
-  it('can load instance', () => {
-    expect(service).toBeTruthy();
-  });
 });

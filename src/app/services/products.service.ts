@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModelLicores } from '../interfaces/model-licores';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -24,16 +25,22 @@ getProduct() {
 }
 
 
+
 //PUT
-putProducto(productoActualizado: ModelLicores, id: string) {
-  return this._httpClient.put(this.URL_PRODUCTOS+'/actualizar/'+ id, productoActualizado);
+
+putProducto(id: string, producto: ModelLicores): Observable<any> {
+  return this._httpClient.put(this.URL_PRODUCTOS+`/productos/${id}`, producto);
 }
+
 
 
 //DELETE
-deleteProducto(id:string){
-return this._httpClient.delete(this._httpClient+ '/eliminar/'+id);
+deleteProducto(id: string) {
+  return this._httpClient.delete(this.URL_PRODUCTOS+`/eliminar/${id}`);
 }
+
+}
+
 
 
 

@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { UsuariosModel } from '../interfaces/usuarios-model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -19,8 +20,6 @@ export class UserService {
 postUsuarios(user: UsuariosModel) {
   return this._httpClient.post(this.URL_USUARIOS + '/crear', user);
 
-
-
 }
 
 
@@ -36,6 +35,12 @@ getUsuarios(){
 deleteUsuarios(id:string){
 
   return this._httpClient.delete(this.URL_USUARIOS+ '/borrar/' + id)
+}
+
+
+//POST GPT
+putUsuario(id: string, usuario: UsuariosModel): Observable<any> {
+  return this._httpClient.put(`api/usuarios/${id}`, usuario);
 }
 
 }
